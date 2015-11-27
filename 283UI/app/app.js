@@ -42,6 +42,10 @@ angular.module('dockerui', ['dockerui.templates', 'ngRoute', 'dockerui.services'
             templateUrl: 'app/components/events/events.html',
             controller: 'EventsController'
         });
+        $routeProvider.when('/jenkins/', {
+            templateUrl: 'app/components/jenkins/jenkins.html',
+            controller: 'JenkinsController'
+        });
         $routeProvider.otherwise({redirectTo: '/'});
     }])
     // This is your docker url that the api will use to make requests
