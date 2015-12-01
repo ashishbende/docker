@@ -1,4 +1,4 @@
-/*! dockerui - v0.8.0 - 2015-11-26
+/*! dockerui - v0.8.0 - 2015-12-01
  * https://github.com/crosbymichael/dockerui
  * Copyright (c) 2015 Michael Crosby & Kevan Ahlquist;
  * Licensed MIT
@@ -30,10 +30,10 @@ angular.module('dockerui', ['dockerui.templates', 'ngRoute', 'dockerui.services'
             templateUrl: 'app/components/stats/stats.html',
             controller: 'StatsController'
         });
-        $routeProvider.when('/containers_network', {
+       /* $routeProvider.when('/containers_network', {
             templateUrl: 'app/components/containersNetwork/containersNetwork.html',
             controller: 'ContainersNetworkController'
-        });
+        });*/
         $routeProvider.when('/images/', {
             templateUrl: 'app/components/images/images.html',
             controller: 'ImagesController'
@@ -752,12 +752,12 @@ angular.module('dashboard', [])
                     value: stopped,
                     color: '#C7604C',
                     title: 'Stopped'
-                }, // stopped
+                }/*, // stopped
                 {
                     value: ghost,
                     color: '#E2EAE9',
                     title: 'Ghost'
-                } // ghost
+                } // ghost*/
             ];
 
             c.Doughnut(data, opts);
@@ -2221,7 +2221,7 @@ angular.module("app/components/footer/statusbar.html", []).run(["$templateCache"
   $templateCache.put("app/components/footer/statusbar.html",
     "<footer class=\"center well\">\n" +
     "    <p>\n" +
-    "        <small> CMPE 283 Project, Team 1 2015</small>\n" +
+    "        <strong> CMPE 283 Project, Team 1 2015</strong>\n" +
     "    </p>\n" +
     "</footer>\n" +
     "");
@@ -2343,7 +2343,7 @@ angular.module("app/components/image/image.html", []).run(["$templateCache", fun
 
 angular.module("app/components/images/images.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("app/components/images/images.html",
-    "<div ng-include=\"template\" ng-controller=\"BuilderController\"></div>\n" +
+    "    <div ng-include=\"template\" ng-controller=\"BuilderController\"></div>\n" +
     "<div ng-include=\"template\" ng-controller=\"PullImageController\"></div>\n" +
     "\n" +
     "<h2>Images:</h2>\n" +
@@ -2503,28 +2503,44 @@ angular.module("app/components/info/info.html", []).run(["$templateCache", funct
 
 angular.module("app/components/jenkins/jenkins.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("app/components/jenkins/jenkins.html",
+    "<div id=\"view\" class=\"ng-scope\">\n" +
     "<div class=\"detail\">\n" +
-    "    {{ firstName + \" \" + lastName }}\n" +
-    "    <h2> Jenkin jobs</h2>\n" +
-    "    <a href=\"http://ec2-54-183-209-118.us-west-1.compute.amazonaws.com:8080//api/json?pretty=true\" class=\"\">See Jobs</a>\n" +
+    "    <h2> Jenkin Jobs:</h2>\n" +
     "\n" +
+    "    <table class=\"table table-striped\">\n" +
+    "        <thead>\n" +
+    "        <tr>\n" +
+    "            <th>Jobs</th>\n" +
+    "            <th>Status</th>\n" +
+    "            <th>Details</th>\n" +
+    "        </tr>\n" +
+    "        </thead>\n" +
+    "        <tbody>\n" +
+    "        <tr>\n" +
+    "            <td>{{ job.name }}</td>\n" +
+    "            <td>{{ job.color}}</td>\n" +
+    "            <td><a href=\"http://ec2-54-183-209-118.us-west-1.compute.amazonaws.com:8080/api/json?pretty=true\">{{ job.url }}</a></td>\n" +
+    "        </tr>\n" +
+    "        </tbody>\n" +
+    "    </table>\n" +
     "</div>\n" +
-    "");
+    "</div>");
 }]);
 
 angular.module("app/components/masthead/masthead.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("app/components/masthead/masthead.html",
     "<div class=\"masthead\">\n" +
-    "    <h3 class=\"text-muted\">Control Panel</h3>\n" +
+    "    <h3 class=\"text-muted\">Control Panel </h3>\n" +
     "    <ul class=\"nav well\">\n" +
     "        <li><a href=\"#/\">Dashboard</a></li>\n" +
     "        <li><a href=\"#/containers/\">Containers</a></li>\n" +
-    "        <li><a href=\"#/containers_network/\">Containers Network</a></li>\n" +
     "        <li><a href=\"#/images/\">Images</a></li>\n" +
     "        <li><a href=\"#/jenkins/\">Jenkins</a></li>\n" +
-    "        <li><a href=\"#/info/\">DockerInfo</a></li>\n" +
+    "        <li><a href=\"#/info/\">Docker</a></li>\n" +
     "    </ul>\n" +
     "</div>\n" +
+    "\n" +
+    "\n" +
     "");
 }]);
 

@@ -25,10 +25,10 @@ angular.module('dockerui', ['dockerui.templates', 'ngRoute', 'dockerui.services'
             templateUrl: 'app/components/stats/stats.html',
             controller: 'StatsController'
         });
-        $routeProvider.when('/containers_network', {
+       /* $routeProvider.when('/containers_network', {
             templateUrl: 'app/components/containersNetwork/containersNetwork.html',
             controller: 'ContainersNetworkController'
-        });
+        });*/
         $routeProvider.when('/images/', {
             templateUrl: 'app/components/images/images.html',
             controller: 'ImagesController'

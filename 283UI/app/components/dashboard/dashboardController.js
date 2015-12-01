@@ -59,12 +59,12 @@ angular.module('dashboard', [])
                     value: stopped,
                     color: '#C7604C',
                     title: 'Stopped'
-                }, // stopped
+                }/*, // stopped
                 {
                     value: ghost,
                     color: '#E2EAE9',
                     title: 'Ghost'
-                } // ghost
+                } // ghost*/
             ];
 
             c.Doughnut(data, opts);

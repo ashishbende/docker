@@ -38,6 +38,7 @@
 
 .masthead .nav.well {
   padding: 0;
+  color: white;
 }
 
 .masthead .nav li {
@@ -47,6 +48,10 @@
 }
 
 .masthead .nav li a {
+  /*
+    background-color: black;
+    */
+
   font-weight: bold;
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -75,6 +80,7 @@
 .center {
   width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .btn-remove {

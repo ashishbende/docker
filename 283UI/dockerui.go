@@ -14,7 +14,7 @@ import (
 
 var (
 	endpoint = flag.String("e", "/var/run/docker.sock", "Dockerd endpoint")
-	addr     = flag.String("p", ":3000", "Address and port to serve dockerui")
+	addr     = flag.String("p", ":9000", "Address and port to serve dockerui")
 	assets   = flag.String("a", ".", "Path to the assets")
 )
 
