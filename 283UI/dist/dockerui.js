@@ -2236,19 +2236,19 @@ angular.module("app/components/image/image.html", []).run(["$templateCache", fun
     "\n" +
     "<div class=\"detail\">\n" +
     "\n" +
-    "    <h4>Image: {{ tag }}</h4>\n" +
-    "\n" +
+    "    <h4>Image: <strong>{{ tag }}</strong></h4>\n" +
+    "<!--\n" +
     "    <div class=\"btn-group detail\">\n" +
     "        <button class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#create-modal\">Create</button>\n" +
-    "    </div>\n" +
+    "    </div> -->\n" +
     "\n" +
-    "    <div>\n" +
+    "    <!-- <div>\n" +
     "        <h4>Containers created:</h4>\n" +
     "        <canvas id=\"containers-started-chart\" width=\"750\">\n" +
     "            <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a\n" +
     "                    href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n" +
     "        </canvas>\n" +
-    "    </div>\n" +
+    "    </div> -->\n" +
     "\n" +
     "    <table class=\"table table-striped\">\n" +
     "        <tbody>\n" +
@@ -2311,7 +2311,7 @@ angular.module("app/components/image/image.html", []).run(["$templateCache", fun
     "        </ul>\n" +
     "    </div>\n" +
     "\n" +
-    "    <hr/>\n" +
+    "    <!-- <hr/>\n" +
     "\n" +
     "    <div class=\"row-fluid\">\n" +
     "        <form class=\"form-inline\" role=\"form\">\n" +
@@ -2329,7 +2329,7 @@ angular.module("app/components/image/image.html", []).run(["$templateCache", fun
     "                <input type=\"button\" ng-click=\"updateTag()\" value=\"Tag\" class=\"btn btn-primary\"/>\n" +
     "            </fieldset>\n" +
     "        </form>\n" +
-    "    </div>\n" +
+    "    </div> -->\n" +
     "\n" +
     "    <hr/>\n" +
     "\n" +
@@ -2400,10 +2400,10 @@ angular.module("app/components/info/info.html", []).run(["$templateCache", funct
     "            <td>Docker version:</td>\n" +
     "            <td>{{ docker.Version }}</td>\n" +
     "        </tr>\n" +
-    "        <tr>\n" +
+    "        <!-- <tr>\n" +
     "            <td>Go Version:</td>\n" +
     "            <td>{{ docker.GoVersion }}</td>\n" +
-    "        </tr>\n" +
+    "        </tr> -->\n" +
     "        <tr>\n" +
     "            <td>Containers:</td>\n" +
     "            <td>{{ info.Containers }}</td>\n" +
