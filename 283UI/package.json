@@ -1,19 +1,19 @@
 {
-  "author": "Michael Crosby & Kevan Ahlquist",
+  "author": "Ashish Bende",
   "name": "dockerui",
-  "homepage": "https://github.com/crosbymichael/dockerui",
-  "version": "0.8.0",
+  "homepage": "https://github.com/ashishbende/docker",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:crosbymichael/dockerui.git"
+    "url": "git@github.com:ashishbende/docker.git"
   },
   "bugs": {
-    "url": "https://github.com/crosbymichael/dockerui/issues"
+    "url": "https://github.com/ashishbende/docker/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/crosbymichael/dockerui/master/LICENSE"
+      "url": "https://raw.githubusercontent.com/ashishbende/docker/master/LICENSE"
     }
   ],
   "engines": {

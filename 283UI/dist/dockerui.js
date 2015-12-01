@@ -1,6 +1,6 @@
-/*! dockerui - v0.8.0 - 2015-12-01
- * https://github.com/crosbymichael/dockerui
- * Copyright (c) 2015 Michael Crosby & Kevan Ahlquist;
+/*! dockerui - v0.1.0 - 2015-12-01
+ * https://github.com/ashishbende/docker
+ * Copyright (c) 2015 Ashish Bende;
  * Licensed MIT
  */
 angular.module('dockerui', ['dockerui.templates', 'ngRoute', 'dockerui.services', 'dockerui.filters', 'masthead', 'footer', 'dashboard', 'container', 'containers', 'containersNetwork', 'images', 'image', 'pullImage', 'startContainer', 'sidebar', 'info', 'builder', 'containerLogs', 'containerTop', 'events', 'stats'])
@@ -47,14 +47,13 @@ angular.module('dockerui', ['dockerui.templates', 'ngRoute', 'dockerui.services'
             templateUrl: 'app/components/events/events.html',
             controller: 'EventsController'
         });
-        $routeProvider.when('/jenkins/', {
+        /*$routeProvider.when('/jenkins/', {
             templateUrl: 'app/components/jenkins/jenkins.html',
             controller: 'JenkinsController'
-        });
+        });*/
         $routeProvider.otherwise({redirectTo: '/'});
     }])
-    // This is your docker url that the api will use to make requests
-    // You need to set this to the api endpoint without the port i.e. http://192.168.1.9
+
     .constant('DOCKER_ENDPOINT', 'dockerapi')
     .constant('DOCKER_PORT', '') // Docker port, leave as an empty string if no port is requred.  If you have a port, prefix it with a ':' i.e. :4243
     .constant('UI_VERSION', 'v0.8.0')
@@ -2138,27 +2137,27 @@ angular.module("app/components/dashboard/dashboard.html", []).run(["$templateCac
     "       </div>\n" +
     "   </div> -->\n" +
     "\n" +
-    "    <div class=\"row\">\n" +
-    "        <div class=\"col-xs-10\">\n" +
-    "            <div class=\"col-xs-5\">\n" +
-    "                <h3>Running Containers</h3>\n" +
-    "                <ul>\n" +
-    "                    <li ng-repeat=\"container in containers|orderBy:predicate\">\n" +
-    "                        <a href=\"#/containers/{{ container.Id }}/\">{{ container|containername }}</a>\n" +
-    "                        <span class=\"label label-{{ container.Status|statusbadge }}\">{{ container.Status }}</span>\n" +
-    "                    </li>\n" +
-    "                </ul>\n" +
-    "            </div>\n" +
-    "            <div class=\"col-xs-5 text-right\">\n" +
-    "                <h3>Status</h3>\n" +
-    "                <canvas id=\"containers-chart\" class=\"pull-right\">\n" +
-    "                    <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a\n" +
-    "                            href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n" +
-    "                </canvas>\n" +
-    "                <div id=\"chart-legend\"></div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
+    "   <!--  <div class=\"row\">\n" +
+    "       <div class=\"col-xs-10\">\n" +
+    "           <div class=\"col-xs-5\">\n" +
+    "               <h3>Running Containers</h3>\n" +
+    "               <ul>\n" +
+    "                   <li ng-repeat=\"container in containers|orderBy:predicate\">\n" +
+    "                       <a href=\"#/containers/{{ container.Id }}/\">{{ container|containername }}</a>\n" +
+    "                       <span class=\"label label-{{ container.Status|statusbadge }}\">{{ container.Status }}</span>\n" +
+    "                   </li>\n" +
+    "               </ul>\n" +
+    "           </div>\n" +
+    "           <div class=\"col-xs-5 text-right\">\n" +
+    "               <h3>Status</h3>\n" +
+    "               <canvas id=\"containers-chart\" class=\"pull-right\">\n" +
+    "                   <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a\n" +
+    "                           href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n" +
+    "               </canvas>\n" +
+    "               <div id=\"chart-legend\"></div>\n" +
+    "           </div>\n" +
+    "       </div>\n" +
+    "   </div> -->\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-10\" id=\"stats\">\n" +
@@ -2391,18 +2390,20 @@ angular.module("app/components/info/info.html", []).run(["$templateCache", funct
     "<div class=\"detail\">\n" +
     "    <h2>Docker Information</h2>\n" +
     "\n" +
-    "    <div>\n" +
-    "        <p class=\"lead\">\n" +
-    "            <strong>API Endpoint: </strong>{{ endpoint }}<br/>\n" +
-    "            <strong>API Version: </strong>{{ docker.ApiVersion }}<br/>\n" +
-    "            <strong>Docker version: </strong>{{ docker.Version }}<br/>\n" +
-    "            <strong>Git Commit: </strong>{{ docker.GitCommit }}<br/>\n" +
-    "            <strong>Go Version: </strong>{{ docker.GoVersion }}<br/>\n" +
-    "        </p>\n" +
-    "    </div>\n" +
-    "\n" +
     "    <table class=\"table table-striped\">\n" +
     "        <tbody>\n" +
+    "        <tr>\n" +
+    "            <td>API Endpoint:</td>\n" +
+    "            <td>{{ endpoint }}</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>Docker version:</td>\n" +
+    "            <td>{{ docker.Version }}</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>Go Version:</td>\n" +
+    "            <td>{{ docker.GoVersion }}</td>\n" +
+    "        </tr>\n" +
     "        <tr>\n" +
     "            <td>Containers:</td>\n" +
     "            <td>{{ info.Containers }}</td>\n" +
@@ -2432,60 +2433,12 @@ angular.module("app/components/info/info.html", []).run(["$templateCache", funct
     "            <td>{{ info.KernelVersion }}</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
-    "            <td>ID:</td>\n" +
-    "            <td>{{ info.ID }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Labels:</td>\n" +
-    "            <td>{{ info.Labels }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>File Descriptors:</td>\n" +
-    "            <td>{{ info.NFd }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Goroutines:</td>\n" +
-    "            <td>{{ info.NGoroutines }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Storage Driver:</td>\n" +
-    "            <td>{{ info.Driver }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Storage Driver Status:</td>\n" +
-    "            <td>\n" +
-    "                <p ng-repeat=\"val in info.DriverStatus\">\n" +
-    "                    {{ val[0] }}: {{ val[1] }}\n" +
-    "                </p>\n" +
-    "            </td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Execution Driver:</td>\n" +
-    "            <td>{{ info.ExecutionDriver }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Events:</td>\n" +
-    "            <td><a href=\"#/events\">Events</a></td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
     "            <td>IPv4 Forwarding:</td>\n" +
     "            <td>{{ info.IPv4Forwarding }}</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
-    "            <td>Index Server Address:</td>\n" +
-    "            <td>{{ info.IndexServerAddress }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Init Path:</td>\n" +
-    "            <td>{{ info.InitPath }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
     "            <td>Docker Root Directory:</td>\n" +
     "            <td>{{ info.DockerRootDir }}</td>\n" +
-    "        </tr>\n" +
-    "        <tr>\n" +
-    "            <td>Init SHA1</td>\n" +
-    "            <td>{{ info.InitSha1 }}</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
     "            <td>Memory Limit:</td>\n" +
@@ -2535,8 +2488,8 @@ angular.module("app/components/masthead/masthead.html", []).run(["$templateCache
     "        <li><a href=\"#/\">Dashboard</a></li>\n" +
     "        <li><a href=\"#/containers/\">Containers</a></li>\n" +
     "        <li><a href=\"#/images/\">Images</a></li>\n" +
-    "        <li><a href=\"#/jenkins/\">Jenkins</a></li>\n" +
-    "        <li><a href=\"#/info/\">Docker</a></li>\n" +
+    "         <li><a href=\"#/events/\">Events</a></li>\n" +
+    "         <li><a href=\"#/info/\">System Info</a></li>\n" +
     "    </ul>\n" +
     "</div>\n" +
     "\n" +
