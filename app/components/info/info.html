@@ -1,0 +1,64 @@
+<div class="detail">
+    <h2>Docker Information</h2>
+
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td>API Endpoint:</td>
+            <td>{{ endpoint }}</td>
+        </tr>
+        <tr>
+            <td>Docker version:</td>
+            <td>{{ docker.Version }}</td>
+        </tr>
+        <!-- <tr>
+            <td>Go Version:</td>
+            <td>{{ docker.GoVersion }}</td>
+        </tr> -->
+        <tr>
+            <td>Containers:</td>
+            <td>{{ info.Containers }}</td>
+        </tr>
+        <tr>
+            <td>Images:</td>
+            <td>{{ info.Images }}</td>
+        </tr>
+        <tr>
+            <td>Debug:</td>
+            <td>{{ info.Debug }}</td>
+        </tr>
+        <tr>
+            <td>CPUs:</td>
+            <td>{{ info.NCPU }}</td>
+        </tr>
+        <tr>
+            <td>Total Memory:</td>
+            <td>{{ info.MemTotal|humansize }}</td>
+        </tr>
+        <tr>
+            <td>Operating System:</td>
+            <td>{{ info.OperatingSystem }}</td>
+        </tr>
+        <tr>
+            <td>Kernel Version:</td>
+            <td>{{ info.KernelVersion }}</td>
+        </tr>
+        <tr>
+            <td>IPv4 Forwarding:</td>
+            <td>{{ info.IPv4Forwarding }}</td>
+        </tr>
+        <tr>
+            <td>Docker Root Directory:</td>
+            <td>{{ info.DockerRootDir }}</td>
+        </tr>
+        <tr>
+            <td>Memory Limit:</td>
+            <td>{{ info.MemoryLimit }}</td>
+        </tr>
+        <tr>
+            <td>Swap Limit:</td>
+            <td>{{ info.SwapLimit }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
